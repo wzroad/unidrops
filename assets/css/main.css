@@ -1,0 +1,75 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #f9f9ff;
+}
+
+button {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.g {
+  background: linear-gradient(90deg, #f9f9ff, #f9f8fe, #e6e0eb, #b1b7e8);
+}
+
+.g1 {
+  background: linear-gradient(25deg, #f9f9ff, #cacaea, #f9f9ff);
+}
+
+.g2 {
+  background: linear-gradient(45deg, #b1b7e8, #e6e0eb, #f9f9ff);
+}
+
+.g3 {
+  background: linear-gradient(90deg, #f1f1f5, #cacaea, #f3f3f6);
+}
+
+ul,
+ol,
+ul li,
+ol li {
+  list-style: none;
+}
+
+.c-shadow {
+  box-shadow: 4px 4px 30px 0 rgba(0, 0, 0, 0.25);
+}
+
+.rich-text h2 {
+  font-size: 2rem;
+  padding: .625rem 0;
+}
+
+.rich-text p {
+  line-height: 1.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.rich-text img {
+  max-width: 100%;
+}
+
+.rich-text ul,
+.rich-text ol {
+  padding-bottom: 1.25rem;
+  list-style: none;
+}
+
+.rich-text ol li,
+.rich-text ul li {
+  list-style: disc inside;
+  line-height: 1.75rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.25rem;
+}
