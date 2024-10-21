@@ -5,7 +5,7 @@
         <img src="~/assets/images/logo.png" class="w-26" alt="">
       </NuxtLink>
       <div class="hidden lg:flex gap-x-12 items-center pl-12">
-        <NuxtLink to="/college" @click="popup = false" :class="[route.path === '/college' ? 'bg-pruple1' : '']"
+        <NuxtLink to="/college" @click="popup = false" :class="[route.name.includes('college') ? 'bg-pruple1' : '']"
           class=" block px-6 py-2.5 rounded-2 text-black ">学院
         </NuxtLink>
         <NuxtLink to="/airdrop" @click="popup = false"
@@ -29,7 +29,7 @@
     <div class="fixed z-31 top-0 left-0 right-0 bottom-0 bg-black bg-op-50" @click="popup = false"></div>
     <div class="fixed z-31 top-0 left-22 right-0 bottom-0 bg-white  pt-16">
       <div class="flex flex-col gap-y-2 px-10">
-        <NuxtLink to="/college" @click="popup = false" :class="[route.path === '/college' ? 'bg-pruple1' : '']"
+        <NuxtLink to="/college" @click="popup = false" :class="[route.name.includes('college') ? 'bg-pruple1' : '']"
           class="block px-6 py-2.5 rounded-2 text-black">学院
         </NuxtLink>
         <NuxtLink to="/airdrop" @click="popup = false"

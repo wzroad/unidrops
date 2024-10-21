@@ -4,7 +4,7 @@ export default defineConfig({
   theme: {
     colors: {
       pruple: "#7310ff",
-      pruple1: "#eae8fe",
+      pruple1: "#f3e8ff",
       yellow: "#f2ef7f",
     },
   },
