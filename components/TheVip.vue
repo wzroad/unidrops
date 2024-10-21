@@ -8,7 +8,7 @@
       <div class="text-sm text-left mb-5">{{ item.desc }}</div>
       <div class=" mb-7 text-xl font-600 text-left">{{ item.price }}</div>
       <NuxtLink to="/vip">
-        <CButton class="w-60 md:text-2xl">立即开通</CButton>
+        <CButton class="w-60 md:text-2xl" @click="onPay">立即开通</CButton>
       </NuxtLink>
       <div class="flex flex-col gap-y-4 mt-10">
         <div class="flex items-center gap-x-2" v-for="child in item.list" :key="child.id">
@@ -19,6 +19,7 @@
       </div>
     </div>
   </div>
+  <DialogBuyVip ref="dialogBuyVip" />
 </template>
 <script setup>
 import hj from '~/assets/images/hj.svg'
@@ -50,4 +51,9 @@ const list3 = ref([
     ]
   },
 ])
+
+const dialogBuyVip = ref()
+const onPay = () => {
+  dialogBuyVip.value.open()
+}
 </script>
