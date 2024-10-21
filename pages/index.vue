@@ -7,7 +7,9 @@
         <div class="text-center bg-white p-7 md:p-13 c-shadow rounded-2 md:flex-1 " v-for="item in list" :key="item.id">
           <div class="text-3xl font-bold mb-2.5 md:mb-7">{{ item.title }}</div>
           <div class="text-sm mb-5 md:h-55 text-left">{{ item.desc }}</div>
-          <CButton class="md:py-4 md:px-9 md:text-2xl">{{ item.btnText }}</CButton>
+          <NuxtLink :to="item.to">
+            <CButton class="md:py-4 md:px-9 md:text-2xl">{{ item.btnText }}</CButton>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -76,9 +78,9 @@ import icon_02 from '~/assets/images/icon_02.svg'
 import icon_03 from '~/assets/images/icon_03.svg'
 import icon_04 from '~/assets/images/icon_04.svg'
 const list = ref([
-  { id: 1, title: '我是新手', desc: '0基础入门区块链赚钱实战，28节课全方位系统化学习撸空投技能，帮助您赚取第一桶金', btnText: '立即学习' },
-  { id: 2, title: '我有基础', desc: '我们为您精选了优质的空投项目，量身定制最佳的撸空投策略。在项目大热之前提前布局 Alpha，助您成为项目OG，告诉你撸什么，怎么撸，什么时候重仓，什么时候离场。', btnText: '立即赚钱' },
-  { id: 3, title: '我想进群', desc: '与顶级空投猎人凯文一对一交流，和一流的头部玩家成为战友。每日分享撸毛、套利、打新、挖矿等赚钱干货，优质项目反复提醒，助您快速从Web3中赚取收益', btnText: '立即进群' },
+  { id: 1, title: '我是新手', desc: '0基础入门区块链赚钱实战，28节课全方位系统化学习撸空投技能，帮助您赚取第一桶金', to: 'college', btnText: '立即学习' },
+  { id: 2, title: '我有基础', desc: '我们为您精选了优质的空投项目，量身定制最佳的撸空投策略。在项目大热之前提前布局 Alpha，助您成为项目OG，告诉你撸什么，怎么撸，什么时候重仓，什么时候离场。', to: 'guide', btnText: '立即赚钱' },
+  { id: 3, title: '我想进群', desc: '与顶级空投猎人凯文一对一交流，和一流的头部玩家成为战友。每日分享撸毛、套利、打新、挖矿等赚钱干货，优质项目反复提醒，助您快速从Web3中赚取收益', to: 'vip', btnText: '立即进群' },
 ])
 const list2 = ref([
   { id: 1, title: '空投', desc: '精选优质的空投项目，提前市场布局高潜力项目。', image: icon_01, },
