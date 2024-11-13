@@ -98,17 +98,21 @@
             </div>
           </div>
 
-          <div>
-            <h2 class="text-7.5 font-900 md:mb-15 mb-5">29 USDT</h2><button
-              class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5"
-              @click="onVip">
-              VIP会员免费学 </button>
-            <div><button
-                class="block w-66.25 py-3 bg-purple1 rounded-2.5 text-black text-5 font-900 cursor-pointer mb-2.5"
+          <div v-if="!userInfo || !userInfo.vip">
+            <h2 class="text-7.5 font-900 md:mb-15 mb-5">29 USDT</h2>
+            <NuxtLink to="/vip"><button
+                class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5">
+                VIP会员免费学 </button></NuxtLink>
+            <div>
+              <button class="block w-66.25 py-3 bg-purple1 rounded-2.5 text-black text-5 font-900 cursor-pointer mb-2.5"
                 @click="open">
                 单独购买 </button>
               <p class="text-sm font-400 text-gray text-center">限时福利：赠送凯文独家空投密码5个</p>
             </div>
+          </div>
+          <div v-else>
+            <button class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5">
+              VIP会员免费学 </button>
           </div>
         </div>
         <div class="md:w-241.25 bg-white md:px-16.5 md:py-10 p-5 rounded-2.5 shadow">
@@ -173,14 +177,20 @@
     </div>
   </div>
   <DialogBuyCollege ref="dialogBuyCollege" />
+  <DialogTheLogin ref="dialogTheLogin" />
 </template>
 <script setup>
+import { useUserStore } from '~/store/user.store';
+
 const dialogBuyCollege = ref()
+const dialogTheLogin = ref()
+const { userInfo } = useUserStore()
 const open = () => {
-  dialogBuyCollege.value.open()
+  if (!userInfo.value || !userInfo.value.id) {
+    dialogTheLogin.value.open()
+  } else {
+    dialogBuyCollege.value.open()
+  }
 }
 
-const onVip = () => {
-  push({ name: 'vip' })
-}
 </script>

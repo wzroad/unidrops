@@ -1,12 +1,14 @@
 import prisma from "~/lib/prisma";
 export default defineEventHandler(async (event) => {
-  const list = await prisma.post.findMany({
+  const list = await prisma.course.findMany({
     select: {
       id: true,
+      courseId: true,
+      part: true,
       title: true,
     },
     orderBy: {
-      id: "asc",
+      courseId: "asc",
     },
   });
   return {

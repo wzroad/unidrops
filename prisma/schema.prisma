@@ -58,6 +58,7 @@ model Airdrop {
 
 model course {
   id         Int    @id @default(autoincrement())
+  courseId   Int    @map("course_id")
   title      String
   part       Int
   courseName String @map("course_name")

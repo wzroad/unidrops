@@ -4,6 +4,12 @@
 
     <div class="ct md:w-343 md:mxa">
       <ElTable :data="list" style="width: 100%">
+        <ElTableColumn prop="name" align="center" label="名称">
+          <template #default="{ row }">
+            <img class="w-6 h-6 object-cover rounded-1" :src="`https://api.unidrops.io/storage/${row.thumbnail}`"
+              alt="">
+          </template>
+        </ElTableColumn>
         <ElTableColumn prop="name" align="center" label="名称" />
         <ElTableColumn prop="score" align="center" label="评分" sortable />
         <ElTableColumn prop="emptyRate" align="center" label="空投几率" sortable>

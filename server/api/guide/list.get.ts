@@ -15,6 +15,9 @@ export default defineEventHandler(async (event) => {
       updatedAt: true,
       createdAt: true,
     },
+    orderBy: {
+      id: "asc",
+    },
   });
   const count = await prisma.post.count();
   return {

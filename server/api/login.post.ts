@@ -43,6 +43,7 @@ export default defineEventHandler(async (event) => {
     data: {
       email: safeEmail,
       token,
+      vip: user.vipLevel,
     },
     message: "success",
   };

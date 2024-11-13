@@ -17,7 +17,7 @@
           </div>
         </div>
         <p class="text-sm md:mb-7.5 mb-2.5 font-400">{{ item.description }}</p><span
-          class="font-400 text-gray-500 text-xs">发布时间：{{ formatDate(item.published) }}</span>
+          class="font-400 text-gray-500 text-xs">发布时间：{{ formatDate(item.publishAt) }}</span>
       </div><img class="md:w-30 md:h-30 w-41 h-41 rounded-1.5"
         :src="`https://api.unidrops.io/storage/${item.thumbnail}`" alt="Unidrops 挖矿精选09.16">
     </NuxtLink>
