@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --dotenv .env.local",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
@@ -12,16 +12,26 @@
   "dependencies": {
     "@element-plus/nuxt": "^1.0.10",
     "@nuxt/icon": "^1.5.6",
-    "dayjs": "^1.11.13",
+    "@nuxtjs/mdc": "^0.9.2",
+    "@pinia/nuxt": "^0.7.0",
+    "@prisma/nuxt": "^0.0.35",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
     "lodash-unified": "^1.0.3",
     "nuxt": "^3.13.2",
+    "remark-emoji": "^5.0.1",
     "vue": "latest",
     "vue-router": "latest"
   },
-  "packageManager": "pnpm@9.12.2+sha512.22721b3a11f81661ae1ec68ce1a7b879425a1ca5b991c975b074ac220b187ce56c708fe5db69f4c962c989452eee76c82877f4ee80f474cebd61ee13461b6228",
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.1",
+    "@prisma/client": "^5.22.0",
+    "@sidebase/nuxt-auth": "^0.9.4",
+    "@types/jsonwebtoken": "^9.0.7",
     "@unocss/nuxt": "^0.63.4",
+    "nodemailer": "^6.9.16",
+    "nuxt-nodemailer": "^1.1.2",
+    "prisma": "5.22.0",
     "unocss": "^0.63.4"
   }
 }

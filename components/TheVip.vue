@@ -8,7 +8,7 @@
       <div class="text-sm text-left mb-5">{{ item.desc }}</div>
       <div class=" mb-7 text-xl font-600 text-left">{{ item.price }}</div>
       <NuxtLink to="/vip">
-        <CButton class="w-60 md:text-2xl" @click="onPay">立即开通</CButton>
+        <TheButton class="w-60 md:text-2xl" @click="onPay">立即开通</TheButton>
       </NuxtLink>
       <div class="flex flex-col gap-y-4 mt-10">
         <div class="flex items-center gap-x-2" v-for="child in item.list" :key="child.id">

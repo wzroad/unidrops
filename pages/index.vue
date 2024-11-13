@@ -8,7 +8,7 @@
           <div class="text-3xl font-bold mb-2.5 md:mb-7">{{ item.title }}</div>
           <div class="text-sm mb-5 md:h-55 text-left">{{ item.desc }}</div>
           <NuxtLink :to="item.to">
-            <CButton class="md:py-4 md:px-9 md:text-2xl">{{ item.btnText }}</CButton>
+            <TheButton class="md:py-4 md:px-9 md:text-2xl">{{ item.btnText }}</TheButton>
           </NuxtLink>
         </div>
       </div>
@@ -21,7 +21,7 @@
       <div class="text-sm mb-2 text-center md:text-left"> 身价数亿美元的神鱼大佬给10万美金一下的新手的建议：撸空投！还是撸空投！ </div>
       <div class="text-sm mb-15 text-center md:text-left"> 而凯文也是在2020年开始刷空投，至今取得了不错的回报，而部分圈内的空投大佬的收益更是夸张，少数人甚至直接财务自由了。
       </div>
-      <CButton class="w-full md:w-auto md:px-9 md:text-2xl">立即开始</CButton>
+      <TheButton class="w-full md:w-auto md:px-9 md:text-2xl">立即开始</TheButton>
     </div>
   </div>
   <div class="g1">

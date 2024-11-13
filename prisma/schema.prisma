@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "postgresql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
+  name         String?
+  vipLevel     Int?           @default(0) // 0: 普通, 1: 黄金, 2: 钻石
+  isAdmin      Boolean        @default(false)
+  ProductOrder ProductOrder[]
+
+  @@map("user")
+}
+
+model emailCode {
+  id        Int      @id @default(autoincrement())
+  email     String
+  code      String
+  expiredAt DateTime @map("expired_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("email_code")
+}
+
+model Airdrop {
+  id             Int    @id @default(autoincrement())
+  categoryName   String @map("category_name") // 分类名称
+  emptyRate      String @default("") @map("empty_rate") // 空投率
+  expectedIncome String @default("") @map("expected_income") // 预期收益率
+  funding        String @default("") // 融资
+  level          Int    @default(0) // 优先级 0: 高, 1: 中, 2: 低 
+  minInvest      String @default("") @map("min_invest") // 最小投入
+  name           String
+  score          String @default("") // 评分
+  status         Int    @default(0) // 0: 未开始, 1: 进行中, 2: 已空投
+  thumbnail      String @default("") // 缩略图
+  role           Int    @default(0) // 0: 公开, 1: 黄金, 2: 钻石
+
+  description String? @default("") @db.Text // 描述
+  instruction String  @default("") @db.Text // 说明
+
+  publishAt DateTime @map("publish_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt DateTime @default(now()) @map("created_at") // 创建时间
+
+  @@map("airdrop")
+}
+
+model course {
+  id         Int    @id @default(autoincrement())
+  title      String
+  part       Int
+  courseName String @map("course_name")
+  content    String @db.Text
+}
+
+model Product {
+  id             Int    @id @default(autoincrement())
+  name           String
+  description    String
+  price          Int
+  paymentAddress String @map("payment_address")
+  unit           String @default("ETH")
+
+  createdAt    DateTime       @default(now()) @map("created_at")
+  updatedAt    DateTime       @updatedAt @map("updated_at")
+  ProductOrder ProductOrder[]
+
+  @@map("product")
+}
+
+model ProductOrder {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int      @map("user_id")
+  product   Product  @relation(fields: [productId], references: [id])
+  productId Int      @map("product_id")
+  amount    Int
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([userId])
+  @@index([productId])
+  @@map("product_order")
+}
+
+model Post {
+  id          Int     @id @default(autoincrement())
+  title       String
+  thumbnail   String
+  description String
+  content     String  @db.Text
+  published   Boolean @default(false)
+  role        Int     @default(0) // 0: 公开, 1: 黄金, 2: 钻石
+
+  publishAt DateTime? @default(now()) @map("publish_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+
+  @@map("post")
+}

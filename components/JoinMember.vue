@@ -3,7 +3,7 @@
     <div class="text-xl font-900 mb-6.25 text-purple"> 剩余 85% 为付费内容... </div>
     <div class="text-xl font-400 mb-6.25"> 需开通黄金VIP会员，方可继续阅读 </div>
     <NuxtLink to="/vip">
-      <CButton class="text-xl font-600">加入VIP会员</CButton>
+      <TheButton class="text-xl font-600">加入VIP会员</TheButton>
     </NuxtLink>
   </div>
 </template>
