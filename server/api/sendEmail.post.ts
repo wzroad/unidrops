@@ -6,21 +6,28 @@ export default defineEventHandler(async (event) => {
   const code = Math.floor(Math.random() * 1000000)
     .toString()
     .padStart(6, "0");
-
-  await sendMail({
-    subject: "短信验证码",
-    text: `感谢使用空投学院，验证码：${code}, 有效期30分钟`,
-    to: "john@doe.com",
-  });
-  await prisma.emailCode.create({
-    data: {
-      code,
-      email,
-      expiredAt: new Date(Date.now() + 30 * 60 * 1000),
-    },
-  });
-  return {
-    statusCode: 200,
-    body: { success: true, message: "success" },
-  };
+  try {
+    await sendMail({
+      subject: "短信验证码",
+      text: `感谢使用空投学院，验证码：${code}, 有效期30分钟`,
+      to: "john@doe.com",
+    });
+    await prisma.emailCode.create({
+      data: {
+        code,
+        email,
+        expiredAt: new Date(Date.now() + 30 * 60 * 1000),
+      },
+    });
+    return {
+      statusCode: 200,
+      body: { success: true, message: "success" },
+    };
+  } catch (error) {
+    console.log(error);
+    throw createError({
+      statusCode: 401,
+      message: "发送验证码失败",
+    });
+  }
 });

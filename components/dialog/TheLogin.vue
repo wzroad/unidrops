@@ -11,7 +11,7 @@
         </ElFormItem>
         <ElFormItem label="验证码" prop="code">
           <ElInput v-model="form.code" placeholder="请输入验证码" />
-          <!-- <div class="absolute -top-10 right-0 text-blue text-3 cursor-pointer underline"> 发送验证码 </div> -->
+          <div class="absolute -top-10 right-0 text-blue text-3 cursor-pointer underline" @click="onSend"> 发送验证码 </div>
         </ElFormItem>
       </ElForm>
       <div class="pt-5">
@@ -49,6 +49,13 @@ const login = () => {
       }).then(() => {
       })
     }
+  })
+}
+
+const onSend = () => {
+  $fetch('/api/sendEmail', {
+    method: 'POST',
+    body: JSON.stringify({ email: form.email })
   })
 }
 

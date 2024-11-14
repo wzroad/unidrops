@@ -34,11 +34,17 @@
   </ElDialog>
 </template>
 <script setup>
+const auth = useAuth()
+const { replace } = useRouter()
+if (auth.status.value === 'unauthenticated' || !auth.data.value || !auth.data.value.isAdmin) {
+  replace('/')
+}
+
 const list = ref('')
 const tableList = ref([])
 const { data } = await useAsyncData('manageairdrop', () => $fetch('/api/manage/airdrop/list'))
 
-tableList.value = data.value.data.list
+tableList.value = data.value?.data.list
 
 const dialog = ref(false)
 const onClick = (id) => {

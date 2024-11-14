@@ -1,6 +1,7 @@
 import { defineEventHandler } from "h3";
 import { extractToken, JWT_SECRET } from "./login.post";
 import { JwtPayload, verify } from "jsonwebtoken";
+import prisma from "~/lib/prisma";
 
 export default defineEventHandler(async (event) => {
   const authorizationHeader = getRequestHeader(event, "Authorization");
@@ -8,7 +9,7 @@ export default defineEventHandler(async (event) => {
   if (typeof authorizationHeader === "undefined") {
     throw createError({
       statusCode: 403,
-      statusMessage:
+      message:
         "Need to pass valid Bearer-authorization header to access this endpoint",
     });
   }
@@ -24,22 +25,29 @@ export default defineEventHandler(async (event) => {
     });
     throw createError({
       statusCode: 403,
-      statusMessage: "You must be logged in to use this endpoint",
+      message: "You must be logged in to use this endpoint",
     });
   }
 
   if (!decoded.id) {
     throw createError({
       statusCode: 401,
-      statusMessage: "Unauthorized, user is not logged in",
+      message: "Unauthorized, user is not logged in",
     });
   }
+
+  const user = await prisma.user.findUnique({
+    where: {
+      id: decoded.id,
+    },
+  });
   // 只显示邮箱名称的2个字符，避免暴露用户隐私
-  const safeEmail = decoded.email.replace(/^(.{2}).*@/, "$1***@");
+  const safeEmail = user?.email.replace(/^(.{2}).*@/, "$1***@");
   // 返回当前用户信息
   return {
     id: decoded.id,
     email: safeEmail,
-    vip: decoded.vip,
+    vip: user?.vipLevel,
+    isAdmin: user?.isAdmin,
   };
 });

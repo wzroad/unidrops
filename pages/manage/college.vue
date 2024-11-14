@@ -32,6 +32,12 @@
   </ElDialog>
 </template>
 <script setup>
+const auth = useAuth()
+const { replace } = useRouter()
+if (auth.status.value === 'unauthenticated' || !auth.data.value || !auth.data.value.isAdmin) {
+  replace('/')
+}
+
 const list = ref('')
 const tableList = ref([])
 const { data } = await useFetch('/api/manage/course/list')

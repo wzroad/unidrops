@@ -24,16 +24,16 @@ export default defineNuxtConfig({
   },
   prisma: {
     installStudio: false,
-    generateClient: false,
+    generateClient: process.env.NODE_ENV === "production",
   },
   nodemailer: {
-    from: '"John Doe" <john@doe.com>',
-    host: "smtp.mailtrap.io",
-    port: 465,
+    from: '"空投学院" <info@onechainhub.com>',
+    host: "smtp-mail.outlook.com",
+    port: 587,
     secure: true,
     auth: {
-      user: "john@doe.com",
-      pass: "",
+      user: "info@onechainhub.com",
+      pass: "ABCDEF9*P",
     },
   },
   auth: {
@@ -51,6 +51,14 @@ export default defineNuxtConfig({
         type: "Bearer",
         headerName: "Authorization",
         maxAgeInSeconds: 60 * 60 * 24 * 7,
+      },
+      session: {
+        dataType: {
+          id: "number",
+          email: "string",
+          isAdmin: "boolean",
+          vip: "boolean",
+        },
       },
       pages: {
         login: "/",

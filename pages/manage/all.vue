@@ -11,4 +11,11 @@
     </NuxtLink>
   </div>
 </template>
-<script setup></script>
+<script setup lang="ts">
+const auth = useAuth()
+const { replace } = useRouter()
+if (auth.status.value === 'unauthenticated' || !auth.data.value || !auth.data.value.isAdmin) {
+  replace('/')
+}
+
+</script>
