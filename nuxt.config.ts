@@ -46,6 +46,7 @@ export default defineNuxtConfig({
   prisma: {
     installStudio: false,
     generateClient: process.env.NODE_ENV === "production",
+    autoSetupPrisma: process.env.NODE_ENV === "production",
   },
   nodemailer: process.env.NODE_ENV === "production" ? mailProd : mailTest,
   auth: {
