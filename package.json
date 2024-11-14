@@ -21,7 +21,9 @@
     "@sidebase/nuxt-auth": "^0.9.4",
     "dayjs": "^1.11.13",
     "lodash-unified": "^1.0.3",
-    "remark-emoji": "^5.0.1"
+    "remark-emoji": "^5.0.1",
+    "nodemailer": "^6.9.16",
+    "nuxt-nodemailer": "^1.1.2"
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.0.10",
@@ -31,8 +33,6 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@unocss/nuxt": "^0.63.4",
     "prisma": "5.22.0",
-    "unocss": "^0.63.4",
-    "nodemailer": "^6.9.16",
-    "nuxt-nodemailer": "^1.1.2"
+    "unocss": "^0.63.4"
   }
 }
