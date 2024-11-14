@@ -12,7 +12,7 @@
         </div>
       </div>
 
-      <div v-if="!userInfo || !userInfo.vip">
+      <div v-if="!data || !data.vip">
         <h2 class="text-7.5 font-900 md:mb-15 mb-5">29 USDT</h2>
         <NuxtLink to="/vip"><button
             class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5">
@@ -92,13 +92,13 @@
   <DialogTheLogin ref="dialogTheLogin" />
 </template>
 <script setup>
-import { useUserStore } from '~/store/user.store';
 
 const dialogBuyCollege = ref()
 const dialogTheLogin = ref()
-const { userInfo } = useUserStore()
+const { data } = useAuth()
 const open = () => {
-  if (!userInfo.value || !userInfo.value.id) {
+
+  if (!data.value || !data.value.id) {
     dialogTheLogin.value.open()
   } else {
     dialogBuyCollege.value.open()

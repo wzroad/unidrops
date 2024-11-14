@@ -21,7 +21,7 @@
   </ElDialog>
 </template>
 <script setup>
-import { useUserStore } from '~/store/user.store'
+// import { useAuth } from '@sidebase/nuxt-auth';
 const dialogVisible = ref(false)
 
 const form = reactive({
@@ -33,17 +33,20 @@ const rules = {
   // code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
 }
 
+
 const formRef = ref(null)
-const userStore = useUserStore()
+
+
+const { fullPath } = useRoute()
+const { signIn } = useAuth()
+
 const login = () => {
   formRef.value.validate((valid) => {
     if (valid) {
-      $fetch('/api/login', {
-        method: 'POST',
-        body: JSON.stringify(form)
-      }).then(res => {
-        userStore.setUserInfo(res.data)
-        close()
+      signIn({ email: form.email }, {
+        callbackUrl: fullPath,
+        external: true
+      }).then(() => {
       })
     }
   })

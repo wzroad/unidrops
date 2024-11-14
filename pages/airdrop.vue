@@ -48,16 +48,14 @@
         </ElTableColumn>
       </ElTable>
     </div>
-    <JoinMember v-if="!userInfo.vip" />
+    <JoinMember v-if="!auth.data.value || auth.data.value.vip === 0" />
   </div>
 </template>
 <script setup>
-import { useUserStore } from '~/store/user.store';
-
-const userStore = useUserStore()
-const { userInfo } = storeToRefs(userStore)
-
 const { data } = await useAsyncData('airdrop', () => $fetch('/api/airdrop/list'))
+const auth = useAuth()
+
+
 const list = ref([])
 list.value = data.value.data.list
 

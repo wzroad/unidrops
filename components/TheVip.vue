@@ -8,7 +8,8 @@
       <div class="text-sm text-left mb-5">{{ item.desc }}</div>
       <div class=" mb-7 text-xl font-600 text-left">{{ item.price }}</div>
       <NuxtLink to="/vip">
-        <TheButton class="w-60 md:text-2xl" @click="onPay">立即开通</TheButton>
+        <TheButton class="w-60 md:text-2xl" v-if="data.vip === item.id">您已开通</TheButton>
+        <TheButton class="w-60 md:text-2xl" v-else @click="onPay(item.id)">立即开通</TheButton>
       </NuxtLink>
       <div class="flex flex-col gap-y-4 mt-10">
         <div class="flex items-center gap-x-2" v-for="child in item.list" :key="child.id">
@@ -20,6 +21,7 @@
     </div>
   </div>
   <DialogBuyVip ref="dialogBuyVip" />
+  <DialogTheLogin ref="loginRef" />
 </template>
 <script setup>
 import hj from '~/assets/images/hj.svg'
@@ -41,7 +43,7 @@ const list3 = ref([
       { id: 3, title: '套利', desc: '无进入VIP社群的权限。', has: false },]
   },
   {
-    id: 1, title: '钻石VIP会员', desc: '适合有一定链上基础，有社群交流需求的学员，可查看网站所有非技术类内容。', price: '0.1ETH/ 年', image: zs, list: [
+    id: 2, title: '钻石VIP会员', desc: '适合有一定链上基础，有社群交流需求的学员，可查看网站所有非技术类内容。', price: '0.1ETH/ 年', image: zs, list: [
       { id: 1, title: '空投', desc: '免费学习超过50节课程，包含《0基础入门撸空投》《空投猎人高级课》《链上安全实训》等。', has: true },
       { id: 2, title: '打新', desc: '有资格访问【空投精选】板块，获取最新的空投信息以及攻略。', has: true },
       { id: 3, title: '挖矿', desc: '有资格查看全部【赚钱指南】的内容，获取最新打新，挖矿，套利等赚钱机会。', has: true },
@@ -52,8 +54,14 @@ const list3 = ref([
   },
 ])
 
+const loginRef = ref()
+const { data } = useAuth()
 const dialogBuyVip = ref()
-const onPay = () => {
-  dialogBuyVip.value.open()
+const onPay = (id) => {
+  if (data.value) {
+    dialogBuyVip.value.open(id)
+  } else {
+    loginRef.value.open()
+  }
 }
 </script>

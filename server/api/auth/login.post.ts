@@ -1,8 +1,7 @@
 import prisma from "@/lib/prisma";
 import jwt from "jsonwebtoken";
-import { useCookie } from "nuxt/app";
 
-const JWT_SECRET = "araraaaraarararar"; // Replace with your secret key
+export const JWT_SECRET = "araraaaraarararar"; // Replace with your secret key
 
 export default defineEventHandler(async (event) => {
   const { email, code } = await readBody(event);
@@ -29,7 +28,12 @@ export default defineEventHandler(async (event) => {
   }
 
   const token = jwt.sign(
-    { id: user.id, email: user.email, vip: user.vipLevel },
+    {
+      id: user.id,
+      email: user.email,
+      vip: user.vipLevel,
+      isAdmin: user.isAdmin,
+    },
     JWT_SECRET,
     {
       expiresIn: "7d",
@@ -41,6 +45,7 @@ export default defineEventHandler(async (event) => {
   return {
     code: 200,
     data: {
+      id: user.id,
       email: safeEmail,
       token,
       vip: user.vipLevel,
@@ -48,3 +53,9 @@ export default defineEventHandler(async (event) => {
     message: "success",
   };
 });
+
+export function extractToken(authorizationHeader: string) {
+  return authorizationHeader.startsWith("Bearer ")
+    ? authorizationHeader.slice(7)
+    : authorizationHeader;
+}

@@ -18,20 +18,20 @@
           class="block px-6 py-2.5 rounded-2 text-black ">开通VIP</NuxtLink>
       </div>
       <div class="flex items-center justify-end lg:flex-1 gap-x-3">
-        <el-popover placement="bottom" :width="200" trigger="hover" v-if="userInfo.email">
+        <el-popover placement="bottom" :width="200" trigger="hover" v-if="data">
           <template #reference>
             <Icon name="i-heroicons:user" class="w-6 h-6 text-#7310FF cursor-pointer" />
           </template>
           <ul class="">
-            <li class="mb-2.5 font-700">{{ userInfo.email }}</li>
-            <li class="flex mb-2.5 px-2.5 py-0.75 bg-gray3 rounded-2.5 w-fit font-400" v-if="!userInfo.vip">
+            <li class="mb-2.5 font-700">{{ data.email }}</li>
+            <li class="flex mb-2.5 px-2.5 py-0.75 bg-gray3 rounded-2.5 w-fit font-400" v-if="!data.vip">
               <span class="text-black">普通会员</span>
             </li>
-            <li class="flex mb-2.5 px-2.5 py-0.75 bg-gray3 rounded-2.5 w-fit font-400" v-if="userInfo.vip === 1">
+            <li class="flex mb-2.5 px-2.5 py-0.75 bg-gray3 rounded-2.5 w-fit font-400" v-if="data.vip === 1">
               <img class="w-6 h-6" src="~/assets/images/hj.svg" alt="vip">
               <span class="text-black">黄金VIP会员</span>
             </li>
-            <li class="flex mb-2.5 px-2.5 py-0.75 bg-gray3 rounded-2.5 w-fit font-400" v-if="userInfo.vip === 2">
+            <li class="flex mb-2.5 px-2.5 py-0.75 bg-gray3 rounded-2.5 w-fit font-400" v-if="data.vip === 2">
               <img class="w-6 h-6" src="~/assets/images/zs.svg" alt="vip">
               <span class="text-black">钻石VIP会员</span>
             </li>
@@ -67,13 +67,19 @@
   <DialogTheLogin ref="loginRef" />
 </template>
 <script setup>
-import { useUserStore } from '~/store/user.store';
-const userStore = useUserStore()
-const { userInfo } = storeToRefs(userStore)
 const loginRef = ref(null)
 
 const route = useRoute()
 const popup = ref(false)
+
+const { data, signOut } = useAuth()
+const onLogout = () => {
+  signOut({
+    callbackUrl: route.fullPath,
+    external: true
+  })
+}
+
 
 </script>
 <style></style>

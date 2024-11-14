@@ -1,9 +1,11 @@
 import prisma from "~/lib/prisma";
 export default defineEventHandler(async (event) => {
-  // TODO: 如果不是vite环境，则只返回 6 条数据
-  // const list = await prisma.airdrop.findMany({
-  //   take: 6,
-  // });
+  const authorizationHeader = getRequestHeader(event, "Authorization");
+  let take = 100;
+  // 未登录
+  if (!authorizationHeader) {
+    take = 6;
+  }
   const list = await prisma.airdrop.findMany({
     select: {
       id: true,
@@ -25,6 +27,7 @@ export default defineEventHandler(async (event) => {
     orderBy: {
       id: "asc",
     },
+    take,
   });
   const count = await prisma.airdrop.count();
   return {
