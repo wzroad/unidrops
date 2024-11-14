@@ -42,18 +42,9 @@
   <DialogTheLogin ref="dialogTheLogin" />
 </template>
 <script setup>
-import { useUserStore } from '~/store/user.store';
 
 const dialogBuyCollege = ref()
 const dialogTheLogin = ref()
-const { userInfo } = useUserStore()
-const open = () => {
-  if (!userInfo.value || !userInfo.value.id) {
-    dialogTheLogin.value.open()
-  } else {
-    dialogBuyCollege.value.open()
-  }
-}
 
 const popup = ref(false)
 

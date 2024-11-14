@@ -29,7 +29,6 @@ export default defineNuxtConfig({
     "@prisma/nuxt",
     "nuxt-nodemailer",
     "@element-plus/nuxt",
-    "@pinia/nuxt",
     "@nuxtjs/mdc",
     "@sidebase/nuxt-auth",
   ],

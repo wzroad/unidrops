@@ -8,14 +8,13 @@
     <main class="rich-text text-left font-400">
       <MDC :value="post.content" tag="article" />
     </main>
-    <JoinMember v-if="!userInfo.vip" />
+    <JoinMember v-if="!auth.data.value || !auth.data.value.vip" />
   </div>
 </template>
 <script setup>
-import { useUserStore } from '~/store/user.store';
 
-const userStore = useUserStore()
-const { userInfo } = storeToRefs(userStore)
+const auth = useAuth()
+
 const post = ref({})
 const { query } = useRoute()
 const { data } = await useFetch(`/api/guide/detail?id=${query.id}`)
