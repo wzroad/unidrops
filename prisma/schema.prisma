@@ -16,6 +16,7 @@ model User {
   email        String         @unique
   name         String?
   vipLevel     Int?           @default(0) // 0: 普通, 1: 黄金, 2: 钻石
+  vipExpiredAt DateTime?      @map("vip_expired_at")
   isAdmin      Boolean        @default(false)
   ProductOrder ProductOrder[]
 

@@ -26,6 +26,16 @@ export default defineNuxtConfig({
     installStudio: false,
     generateClient: process.env.NODE_ENV === "production",
   },
+  // nodemailer: {
+  //   from: '"空投学院" <web3@guooni.com>',
+  //   host: "smtp.qiye.aliyun.com",
+  //   port: 465,
+  //   secure: true,
+  //   auth: {
+  //     user: "web3@guooni.com",
+  //     pass: "sdykJYM1994",
+  //   },
+  // },
   nodemailer: {
     from: '"空投学院" <info@onechainhub.com>',
     host: "smtp-mail.outlook.com",

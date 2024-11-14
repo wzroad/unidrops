@@ -11,21 +11,23 @@
         </div>
       </div>
 
-      <div v-if="!data || !data.vip">
+      <div>
         <h2 class="text-7.5 font-900 md:mb-15 mb-5">29 USDT</h2>
-        <NuxtLink to="/vip"><button
-            class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5">
-            VIP会员免费学 </button></NuxtLink>
-        <div>
-          <button class="block w-66.25 py-3 bg-purple1 rounded-2.5 text-black text-5 font-900 cursor-pointer mb-2.5"
-            @click="open">
-            单独购买 </button>
-          <p class="text-sm font-400 text-gray text-center">限时福利：赠送凯文独家空投密码5个</p>
+        <div v-if="!data || !data.vip">
+
+          <NuxtLink to="/vip"><button
+              class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5">
+              VIP会员免费学 </button></NuxtLink>
+          <div>
+            <button class="block w-66.25 py-3 bg-purple1 rounded-2.5 text-black text-5 font-900 cursor-pointer mb-2.5"
+              @click="open">
+              单独购买 </button>
+            <p class="text-sm font-400 text-gray text-center">限时福利：赠送凯文独家空投密码5个</p>
+          </div>
         </div>
-      </div>
-      <div v-else>
-        <button class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5">
-          VIP会员免费学 </button>
+
+        <button v-else class="block w-66.25 py-3 bg-pruple rounded-2.5 text-white text-5 font-900 cursor-pointer mb-5">
+          您已是VIP,可免费学 </button>
       </div>
     </div>
     <div class="md:w-[965px] bg-white md:px-[66px] md:py-[39px] p-[20px] rounded-[10px] shadow" data-v-62bbff21="">

@@ -8,7 +8,7 @@
       <div class="text-sm text-left mb-5">{{ item.desc }}</div>
       <div class=" mb-7 text-xl font-600 text-left">{{ item.price }}</div>
       <NuxtLink to="/vip">
-        <TheButton class="w-60 md:text-2xl" v-if="data && data.vip === item.id">您已开通</TheButton>
+        <TheButton class="w-60 md:text-2xl" v-if="data && data.vip >= item.id">您已开通</TheButton>
         <TheButton class="w-60 md:text-2xl" v-else @click="onPay(item.id)">立即开通</TheButton>
       </NuxtLink>
       <div class="flex flex-col gap-y-4 mt-10">

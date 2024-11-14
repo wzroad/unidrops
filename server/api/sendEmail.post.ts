@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
     await sendMail({
       subject: "短信验证码",
       text: `感谢使用空投学院，验证码：${code}, 有效期30分钟`,
-      to: "john@doe.com",
+      to: email,
     });
     await prisma.emailCode.create({
       data: {

@@ -9,6 +9,9 @@
     <NuxtLink to="/manage/college">
       <ElButton type="primary">教程</ElButton>
     </NuxtLink>
+    <NuxtLink to="/manage/user">
+      <ElButton type="primary">用户</ElButton>
+    </NuxtLink>
   </div>
 </template>
 <script setup lang="ts">
