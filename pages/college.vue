@@ -56,8 +56,4 @@
   </div>
 </template>
 <script setup>
-const { push } = useRouter()
-function onClick(name) {
-  push({ name })
-}
 </script>

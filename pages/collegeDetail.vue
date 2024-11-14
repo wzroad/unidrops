@@ -51,7 +51,7 @@ const popup = ref(false)
 const menu = ref([])
 const { query } = useRoute()
 const { data } = await useFetch('/api/course/list', { query })
-menu.value = data.value.data
+menu.value = data.value ? data.value.data : []
 
 const content = ref('')
 const title = ref('')
@@ -67,7 +67,7 @@ const onDetail = async (item) => {
   const { data } = await $fetch(`/api/course/detail?courseId=${query.id}&part=${item.part}`)
 
   popup.value = false
-  content.value = data.content
+  content.value = data.content || ''
   title.value = item.title
 }
 

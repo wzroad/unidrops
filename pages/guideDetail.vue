@@ -15,9 +15,13 @@
 
 const auth = useAuth()
 
-const post = ref({})
+const post = ref({
+  content: ''
+})
 const { query } = useRoute()
 const { data } = await useFetch(`/api/guide/detail?id=${query.id}`)
-post.value = data.value.data
+post.value = data.value ? data.value.data : {
+  content: ''
+}
 </script>
 <style></style>

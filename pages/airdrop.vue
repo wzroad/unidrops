@@ -57,7 +57,7 @@ const auth = useAuth()
 
 
 const list = ref([])
-list.value = data.value.data.list
+list.value = data.value ? data.value.data.list : []
 
 </script>
 <style>

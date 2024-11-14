@@ -25,14 +25,14 @@
     "remark-emoji": "^5.0.1",
     "vue": "latest",
     "vue-router": "latest",
-    "@unocss/nuxt": "^0.63.4"
+    "@unocss/nuxt": "^0.63.4",
+    "prisma": "5.22.0"
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.1",
     "@iconify-json/heroicons-solid": "^1.2.0",
     "@prisma/client": "^5.22.0",
     "@types/jsonwebtoken": "^9.0.7",
-    "prisma": "5.22.0",
     "unocss": "^0.63.4"
   }
 }

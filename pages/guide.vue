@@ -26,5 +26,5 @@
 <script setup>
 const list = ref([])
 const { data } = await useFetch('/api/guide/list')
-list.value = data.value.data.list
+list.value = data.value ? data.value.data.list : []
 </script>

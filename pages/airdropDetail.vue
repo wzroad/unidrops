@@ -51,7 +51,7 @@
 const { query } = useRoute()
 const airdrop = ref({})
 const { data } = await useFetch('/api/airdrop/detail', { query: { id: query.id } })
-airdrop.value = data.value.data
+airdrop.value = data.value ? data.value.data : {}
 </script>
 <style>
 .bo {
