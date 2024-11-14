@@ -23,11 +23,11 @@
     "lodash-unified": "^1.0.3",
     "remark-emoji": "^5.0.1",
     "nodemailer": "^6.9.16",
-    "nuxt-nodemailer": "^1.1.2"
+    "nuxt-nodemailer": "^1.1.2",
+    "@element-plus/nuxt": "^1.0.10",
+    "@nuxt/icon": "^1.5.6"
   },
   "devDependencies": {
-    "@element-plus/nuxt": "^1.0.10",
-    "@nuxt/icon": "^1.5.6",
     "@iconify-json/heroicons": "^1.2.1",
     "@prisma/client": "^5.22.0",
     "@types/jsonwebtoken": "^9.0.7",
