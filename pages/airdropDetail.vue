@@ -4,7 +4,7 @@
       <div class="flex justify-between items-start md:mb-7.5 mb-2.5">
         <div class="flex items-center"><img class="md:w-20 md:h-20 w-12 h-12 rounded-1.5 shadow"
             src="https://api.unidrops.io/storage/images/0af9d290d21ef5eb4f2d010764f282e0.avif" alt="Usual">
-          <p class="md:ml-7.5 ml-2.5">Usual</p>
+          <p class="md:ml-7.5 ml-2.5">{{ airdrop.name }}</p>
         </div>
         <ul class="flex justify-between md:space-x-6 space-x-3">
           <li class="flex items-center flex-col">

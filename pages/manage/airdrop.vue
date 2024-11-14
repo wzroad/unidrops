@@ -42,9 +42,9 @@ if (auth.status.value === 'unauthenticated' || !auth.data.value || !auth.data.va
 
 const list = ref('')
 const tableList = ref([])
-const { data } = await useAsyncData('manageairdrop', () => $fetch('/api/manage/airdrop/list'))
+const fetchData = await useAsyncData('manageairdrop', () => $fetch('/api/manage/airdrop/list'))
 
-tableList.value = data.value?.data.list
+tableList.value = fetchData.data.value?.data.list
 
 const dialog = ref(false)
 const onClick = (id) => {
@@ -61,6 +61,8 @@ const onSubmit = async () => {
     method: 'POST',
     body: JSON.stringify(form.value)
   })
+  fetchData.refresh()
+  tableList.value = fetchData.data.value?.data.list
   dialog.value = false
 }
 const onAdd = () => {
