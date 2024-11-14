@@ -11,7 +11,9 @@
         </ElFormItem>
         <ElFormItem label="验证码" prop="code">
           <ElInput v-model="form.code" placeholder="请输入验证码" />
-          <div class="absolute -top-10 right-0 text-blue text-3 cursor-pointer underline" @click="onSend"> 发送验证码 </div>
+          <div class="absolute -top-10 right-0 text-blue text-3 cursor-pointer underline select-none" @click="onSend">
+            {{ count ?
+              `${count}后重新发送` : '发送验证码' }} </div>
         </ElFormItem>
       </ElForm>
       <div class="pt-5">
@@ -30,7 +32,7 @@ const form = reactive({
 })
 const rules = {
   email: [{ required: true, message: '请输入邮箱', trigger: 'blur' }, { type: 'email', message: '请输入正确的邮箱', trigger: 'blur' }],
-  // code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
+  code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
 }
 
 
@@ -43,7 +45,7 @@ const { signIn } = useAuth()
 const login = () => {
   formRef.value.validate((valid) => {
     if (valid) {
-      signIn({ email: form.email }, {
+      signIn(form, {
         callbackUrl: fullPath,
         external: true
       }).then(() => {
@@ -51,11 +53,28 @@ const login = () => {
     }
   })
 }
-
+const timer = ref(null)
+const count = ref(0)
 const onSend = () => {
+  if (count.value) {
+    return
+  }
   $fetch('/api/sendEmail', {
     method: 'POST',
     body: JSON.stringify({ email: form.email })
+  }).then(res => {
+    if (res.code === 200) {
+      ElMessage.success('发送成功')
+      count.value = 60
+      timer.value = setInterval(() => {
+        count.value--
+        if (count.value <= 0) {
+          clearInterval(timer.value)
+        }
+      }, 1000)
+    } else {
+      ElMessage.error(res.message)
+    }
   })
 }
 

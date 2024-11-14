@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
     .padStart(6, "0");
   try {
     await sendMail({
-      subject: "短信验证码",
+      subject: "验证码",
       text: `感谢使用空投学院，验证码：${code}, 有效期30分钟`,
       to: email,
     });
@@ -20,13 +20,11 @@ export default defineEventHandler(async (event) => {
       },
     });
     return {
-      statusCode: 200,
-      body: { success: true, message: "success" },
+      code: 200,
     };
   } catch (error) {
-    console.log(error);
     throw createError({
-      statusCode: 401,
+      status: 401,
       message: "发送验证码失败",
     });
   }

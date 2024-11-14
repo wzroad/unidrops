@@ -6,16 +6,20 @@ export const JWT_SECRET = "araraaaraarararar"; // Replace with your secret key
 export default defineEventHandler(async (event) => {
   const { email, code } = await readBody(event);
 
-  // const emailCode = await prisma.emailCode.findFirst({
-  //   where: { email, code, expiredAt: { gte: new Date() } },
-  // });
+  const emailCode = await prisma.emailCode.findFirst({
+    where: { code },
+  });
 
-  // if (!emailCode) {
-  //   return {
-  //     statusCode: 401,
-  //     body: { success: false, message: "验证码已过期" },
-  //   };
-  // }
+  if (!emailCode || emailCode.email !== email) {
+    throw createError({
+      status: 401,
+      message: "验证码已过期",
+    });
+  }
+
+  await prisma.emailCode.delete({
+    where: { id: emailCode.id },
+  });
 
   let user = await prisma.user.findUnique({
     where: { email: email },

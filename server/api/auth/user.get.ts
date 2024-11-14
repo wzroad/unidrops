@@ -8,9 +8,8 @@ export default defineEventHandler(async (event) => {
 
   if (typeof authorizationHeader === "undefined") {
     throw createError({
-      statusCode: 403,
-      message:
-        "Need to pass valid Bearer-authorization header to access this endpoint",
+      status: 403,
+      message: "登录已过期",
     });
   }
   const extractedToken = extractToken(authorizationHeader);
@@ -19,20 +18,16 @@ export default defineEventHandler(async (event) => {
   try {
     decoded = verify(extractedToken, JWT_SECRET) as JwtPayload;
   } catch (error) {
-    console.error({
-      msg: "Login failed. Here's the raw error:",
-      error,
-    });
     throw createError({
-      statusCode: 403,
-      message: "You must be logged in to use this endpoint",
+      status: 403,
+      message: "登录已过期",
     });
   }
 
   if (!decoded.id) {
     throw createError({
-      statusCode: 401,
-      message: "Unauthorized, user is not logged in",
+      status: 403,
+      message: "登录已过期",
     });
   }
 
