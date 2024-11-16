@@ -52,7 +52,7 @@
   </div>
 </template>
 <script setup>
-const { data } = await useAsyncData('airdrop', () => $fetch('/api/airdrop/list'))
+const { data } = await useFetch('/api/airdrop/list')
 const auth = useAuth()
 
 

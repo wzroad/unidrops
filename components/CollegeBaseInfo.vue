@@ -14,7 +14,7 @@
 
 
       <div>
-        <h2 class="text-7.5 font-900 md:mb-15 mb-5">29 USDT</h2>
+        <h2 class="text-7.5 font-900 md:mb-15 mb-5">19 USDT</h2>
         <div v-if="!data || !data.vip">
 
           <NuxtLink to="/vip"><button
@@ -104,7 +104,7 @@ const open = () => {
   if (!data.value || !data.value.id) {
     dialogTheLogin.value.open()
   } else {
-    dialogBuyCollege.value.open()
+    dialogBuyCollege.value.open(1)
   }
 }
 </script>

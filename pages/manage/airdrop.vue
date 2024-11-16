@@ -42,7 +42,7 @@ if (auth.status.value === 'unauthenticated' || !auth.data.value || !auth.data.va
 
 const list = ref('')
 const tableList = ref([])
-const fetchData = await useAsyncData('manageairdrop', () => $fetch('/api/manage/airdrop/list'))
+const fetchData = await useFetch('/api/manage/airdrop/list')
 
 tableList.value = fetchData.data.value?.data.list
 

@@ -111,7 +111,7 @@ const open = () => {
   if (!data.value || !data.value.id) {
     dialogTheLogin.value.open()
   } else {
-    dialogBuyCollege.value.open()
+    dialogBuyCollege.value.open(2)
   }
 }
 

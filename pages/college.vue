@@ -1,7 +1,7 @@
 <template>
   <div class="md:pt-35 pt-10 pb-21.25 g md:!h-[calc(100vh-66px)] !h-auto">
     <div class="md:w-325 mx-auto">
-      <h1 class="text-11.25 font-900 md:mb-6.5 text-center">Unidrops 学院</h1>
+      <h1 class="text-11.25 font-900 md:mb-6.5 text-center">一链通学院</h1>
       <p class="md:mb-25 mb-7.5 text-3.5 font-400 text-center">让1,000,000名用户感受知识赚钱的力量</p>
       <div class="mb-9 text-7.5 font-900 text-center md:text-left">实战空投训练营(3)</div>
       <div class="md:flex justify-between px-5 md:px-0">

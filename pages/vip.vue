@@ -2,7 +2,7 @@
   <div class="bg-pruple pt-17.5">
     <div class="px-5">
       <div>
-        <h1 class="md:text-15 text-10 font-900 text-center text-yellow">Unidrops VIP会员</h1>
+        <h1 class="md:text-15 text-10 font-900 text-center text-yellow">一链通 VIP会员</h1>
         <p class="md:mb-25 mb-10 md:text-11.25 text-7 font-600 text-center text-yellow">升级你的撸毛硬技能 </p>
       </div>
       <TheVip />

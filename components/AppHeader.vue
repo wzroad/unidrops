@@ -2,7 +2,7 @@
   <header class="sticky top-0 z-30 md:px-10 px-5 py-2.5 g">
     <div class="flex items-center justify-between">
       <NuxtLink to="/">
-        <img src="~/assets/images/logo.png" class="w-26" alt="">
+        <img src="~/assets/images/logo.png" class="h-10 block" alt="">
       </NuxtLink>
       <div class="hidden lg:flex gap-x-12 items-center pl-12">
         <NuxtLink to="/college" @click="popup = false" :class="[route.name.includes('college') ? 'bg-pruple1' : '']"

@@ -1,7 +1,7 @@
 <template>
   <div class="g ">
     <div class="px-5 py-10 md:px-0 md:pt-35 md:pb-20  md:w-300 mx-auto">
-      <div class="text-9 font-bold text-center mb-6">掘金 Web3 , 就来 Unidrops</div>
+      <div class="text-9 font-bold text-center mb-6">掘金 Web3 , 就来一链通学院</div>
       <div class="text-sm mb-18 text-center">系统化学习区块链空投知识, 提升认知, 把握赚钱机会</div>
       <div class="flex flex-col gap-y-5 md:flex-row md:gap-x-10">
         <div class="text-center bg-white p-7 md:p-13 c-shadow rounded-2 md:flex-1 " v-for="item in list" :key="item.id">
